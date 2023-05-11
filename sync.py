@@ -7,9 +7,14 @@ from datetime import datetime
 from tqdm import tqdm
 
 
-MAX_EPISODES = 3
+SOURCES_FILE = os.getenv('LOADCAST_SOURCES_FILE') or './sources.txt'
 
-DOWNLOADED_FILES_DESTINATION = './downloaded/'
+if os.getenv('LOADCAST_DOWNLOAD_MAX'):
+    MAX_EPISODES = int(os.getenv('LOADCAST_DOWNLOAD_MAX'))
+else:
+    MAX_EPISODES = 5
+
+DOWNLOADED_FILES_DESTINATION = os.getenv('LOADCAST_DOWNLOAD_DIR') or './downloaded/'
 PREV_DOWNLOADED_FILES_HASHES = f'{DOWNLOADED_FILES_DESTINATION}/prev_downloaded_files.dat'
 
 
@@ -55,7 +60,7 @@ def download_file(url, fn):
 
 def main():
     podcasts = {}
-    with open('sources.txt') as f:
+    with open(SOURCES_FILE) as f:
         for line in f:
             shows, channel_name = load_an_rss_feed(line.strip())
             podcasts[channel_name] = shows
