@@ -14,6 +14,6 @@ The configuration is done in the `sources` file. Simply put in the url to a podc
 
 `LOADCAST_SOURCES_FILE` - The path to the sources file. Defaults to `./sources.txt`.
 
-`LOADCAST_DOWNLOAD_DIR` - The path to the destination folder. Defaults to `./downloads`.
+`LOADCAST_DOWNLOAD_DIR` - The path to the destination folder. Defaults to `./downloaded`.
 
 `LOADCAST_DOWNLOAD_MAX` - The maximum number of files to download per podcast. Defaults to `5`.
