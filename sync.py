@@ -15,10 +15,7 @@ from tqdm import tqdm
 
 SOURCES_FILE = os.getenv('LOADCAST_SOURCES_FILE') or './sources.txt'
 
-if os.getenv('LOADCAST_DOWNLOAD_MAX'):
-    MAX_EPISODES = int(os.getenv('LOADCAST_DOWNLOAD_MAX'))
-else:
-    MAX_EPISODES = 5
+MAX_EPISODES = int(os.getenv('LOADCAST_DOWNLOAD_MAX') or 5)
 
 DOWNLOADED_FILES_DESTINATION = os.getenv('LOADCAST_DOWNLOAD_DIR') or './downloaded/'
 PREV_DOWNLOADED_FILES_HASHES = f'{DOWNLOADED_FILES_DESTINATION}/prev_downloaded_files.dat'
